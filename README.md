@@ -26,7 +26,7 @@ hmaster-1        entrypoint.sh hmaster-1          Up      16000/tcp, 0.0.0.0:327
 namenode-1       entrypoint.sh namenode-1         Up      0.0.0.0:32780->50070/tcp, 8020/tcp  
 regionserver-1   entrypoint.sh regionserver       Up      16020/tcp, 16030/tcp                
 zookeeper-1      entrypoint.sh -server 1 1 vnet   Up      2181/tcp, 2888/tcp, 3888/tcp        
-# Try [Getting Started](http://phoenix.apache.org/installation.html)
+# Try Getting Started (http://phoenix.apache.org/installation.html)
 
 docker-compose exec regionserver-1 sh
 $ psql.py zookeeper-1.vnet examples/STOCK_SYMBOL.sql examples/STOCK_SYMBOL.csv
@@ -45,11 +45,15 @@ csv columns from database.
 CSV Upsert complete. 9 rows upserted
 Time: 0.02 sec(s)
 
-$ sqlline.py zookeeper-1.vent
-Setting property: [incremental, false]
-Setting property: [isolation, TRANSACTION_READ_COMMITTED]
-issuing: !connect jdbc:phoenix:zookeeper-1.vnet none none org.apache.phoenix.jdbc.PhoenixDriver
-Connecting to jdbc:phoenix:zookeeper-1.vnet
+$ sqlline.py zookeeper-1.vnet
+Connected to: Phoenix (version 4.8)
+Driver: PhoenixEmbeddedDriver (version 4.8)
+Autocommit status: true
+Transaction isolation: TRANSACTION_READ_COMMITTED
+Building list of tables and columns for tab-completion (set fastconnect to true to skip)...
+88/88 (100%) Done
+Done
+sqlline version 1.1.9
 0: jdbc:phoenix:zookeeper-1.vnet>
 0: jdbc:phoenix:zookeeper-1.vnet> !table
 0: jdbc:phoenix:zookeeper-1.vnet> select * from STOCK_SYMBOL;
