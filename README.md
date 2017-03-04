@@ -1,5 +1,9 @@
 # docker-phoenix
 
+[![](https://images.microbadger.com/badges/image/smizy/apache-phoenix:4.8-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.8-alpine "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/smizy/apache-phoenix:4.8-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.8-alpine "Get your own version badge on microbadger.com")
+[![CircleCI](https://circleci.com/gh/smizy/docker-apache-phoenix.svg?style=svg&circle-token=8171bd548172f815e994704c0c7f23ac3447371d)](https://circleci.com/gh/smizy/docker-apache-phoenix)
+
 Apache Phoenix docker image based on alpine
 
 ## Small setup
@@ -25,7 +29,8 @@ datanode-1       entrypoint.sh datanode           Up      50010/tcp, 50020/tcp, 
 hmaster-1        entrypoint.sh hmaster-1          Up      16000/tcp, 0.0.0.0:32781->16010/tcp 
 namenode-1       entrypoint.sh namenode-1         Up      0.0.0.0:32780->50070/tcp, 8020/tcp  
 regionserver-1   entrypoint.sh regionserver       Up      16020/tcp, 16030/tcp                
-zookeeper-1      entrypoint.sh -server 1 1 vnet   Up      2181/tcp, 2888/tcp, 3888/tcp        
+zookeeper-1      entrypoint.sh -server 1 1 vnet   Up      2181/tcp, 2888/tcp, 3888/tcp
+
 # Try Getting Started (http://phoenix.apache.org/installation.html)
 
 docker-compose exec regionserver-1 sh
