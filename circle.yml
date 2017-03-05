@@ -48,4 +48,4 @@ deployment:
  #     - docker push smizy/apache-phoenix:${TAG_MAJOR}
  #     - docker push smizy/apache-phoenix:latest
       - docker logout
-      - curl -X POST 'https://hooks.microbadger.com/images/smizy/apache-phoenix/TEpvgKOx0TpLVvxWQSluedQQwpw='
+      - curl -X POST 'https://hooks.microbadger.com/images/smizy/apache-phoenix/6TMEpbBnLOmyh07_g9d8LIWtl0U='
