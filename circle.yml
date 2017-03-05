@@ -46,6 +46,6 @@ deployment:
       - docker push smizy/apache-phoenix:${TAG}
       - docker push smizy/apache-phoenix:${TAG_MINOR}
  #     - docker push smizy/apache-phoenix:${TAG_MAJOR}
-      - docker push smizy/apache-phoenix:latest
+ #     - docker push smizy/apache-phoenix:latest
       - docker logout
       - curl -X POST 'https://hooks.microbadger.com/images/smizy/apache-phoenix/TEpvgKOx0TpLVvxWQSluedQQwpw='
