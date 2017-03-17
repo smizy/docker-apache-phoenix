@@ -2,7 +2,7 @@
 # https://circleci.com/docs/docker
 machine:
   environment:
-    VERSION: "4.9.0"
+    VERSION: "4.10.0"
     BUILD_DATE: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
     VCS_REF: ${CIRCLE_SHA1:0:7}
     TAG: ${VERSION}-alpine
@@ -36,7 +36,7 @@ test:
 # https://circleci.com/docs/environment-variables
 deployment:
   master:
-    branch: "master"
+    branch: "4.10"
     owner: smizy
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS

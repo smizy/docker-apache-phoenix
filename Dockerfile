@@ -15,7 +15,7 @@ LABEL \
     org.label-schema.vcs-url="https://github.com/smizy/docker-apache-phoenix"
 
 ENV PHOENIX_VERSION   $VERSION
-ENV PHOENIX_VER       4.9
+ENV PHOENIX_VER       4.10
 ENV HBASE_VER         1.2
 
 ENV PHOENIX_HOME      /usr/local/phoenix-${PHOENIX_VER}
