@@ -4,7 +4,7 @@
 
   [ $status -eq 0 ]
   
-  get_result="${lines[5]}"
+  get_result="${lines[4]}"
 
   n=$(( ${#lines[*]} -1 ))
   for i in $(seq 0 $n); do
