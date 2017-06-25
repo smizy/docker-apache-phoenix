@@ -2,7 +2,7 @@
 # https://circleci.com/docs/docker
 machine:
   environment:
-    VERSION: "4.9.0"
+    VERSION: "4.11.0"
     BUILD_DATE: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
     VCS_REF: ${CIRCLE_SHA1:0:7}
     TAG: ${VERSION}-alpine
