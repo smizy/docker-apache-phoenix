@@ -5,6 +5,7 @@ ARG VCS_REF
 ARG VERSION
 
 LABEL \
+    maintainer="smizy" \
     org.label-schema.build-date=$BUILD_DATE \
     org.label-schema.docker.dockerfile="/Dockerfile" \
     org.label-schema.license="Apache License 2.0" \
@@ -15,7 +16,7 @@ LABEL \
     org.label-schema.vcs-url="https://github.com/smizy/docker-apache-phoenix"
 
 ENV PHOENIX_VERSION   $VERSION
-ENV PHOENIX_VER       4.11
+ENV PHOENIX_VER       4.12
 ENV HBASE_VER         1.2
 
 ENV PHOENIX_HOME      /usr/local/phoenix-${PHOENIX_VER}

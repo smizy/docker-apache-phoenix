@@ -1,0 +1,89 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/deps
+
+    docker:
+      - image: docker:17.06.0-ce-git
+
+    environment:
+      VERSION: "4.12.0"
+      TAG: "4.12.0-alpine"
+      # TAG: ${VERSION}-alpine
+      # TAG_MINOR: ${VERSION%.*}-alpine
+      # TAG_MAJOR: ${VERSION%%.*}-alpine 
+      # BUILD_DATE: $(date -u +"%Y-%m-%dT%H:%M:%SZ")
+      VCS_REF: ${CIRCLE_SHA1}
+      BATS_VER: "0.4.0"  
+
+    steps:
+      - checkout
+
+      - setup_remote_docker:
+          version: 17.06.0-ce
+
+      # - run:
+      #     name: set TAG vars
+      #     command: |
+      #       export TAG=${VERSION}-alpine
+      #       export TAG_MINOR=${VERSION%.*}-alpine
+      #       export TAG_MAJOR=${VERSION%%.*}-alpine           
+
+      - run:
+          name: install dependencies - lib
+          command: |
+            apk --no-cache add \
+              bash \
+              curl \
+              curl-dev \
+              make
+
+      - run:
+          name: install dependencies - bats
+          command: |
+            dir=${CIRCLE_WORKING_DIRECTORY}
+            mkdir -p ${dir}
+
+            if [[ ! -e ${dir}/bats_v${BATS_VER}.tar.gz ]]; then 
+              curl -sSL -o ${dir}/bats_v${BATS_VER}.tar.gz https://github.com/sstephenson/bats/archive/v${BATS_VER}.tar.gz
+            fi
+            
+            tar -xf ${dir}/bats_v${BATS_VER}.tar.gz
+            bats-${BATS_VER}/install.sh /usr/local
+
+      - run:
+          name: docker client and remote info
+          command: |
+            docker version
+            docker info
+
+      - run:
+          name: docker image build
+          command: make all
+
+      - run:
+          name: test
+          command: |
+            docker inspect smizy/apache-phoenix:${TAG}
+            make test
+
+      - run:
+          nmae: docker image push
+          command: |
+
+            TAG_MINOR=${VERSION%.*}-alpine
+            TAG_MAJOR=${VERSION%%.*}-alpine 
+
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker image tag smizy/apache-phoenix:${TAG} smizy/apache-phoenix
+              docker image tag smizy/apache-phoenix:${TAG} smizy/apache-phoenix:${TAG_MINOR}
+              docker image tag smizy/apache-phoenix:${TAG} smizy/apache-phoenix:${TAG_MAJOR}
+
+              docker image push smizy/apache-phoenix:${TAG}
+              docker image push smizy/apache-phoenix:${TAG_MINOR}
+              docker image push smizy/apache-phoenix:${TAG_MAJOR}  
+              docker image push smizy/apache-phoenix:latest
+              docker logout
+              curl -X POST 'https://hooks.microbadger.com/images/smizy/apache-phoenix/6TMEpbBnLOmyh07_g9d8LIWtl0U='
+            fi
