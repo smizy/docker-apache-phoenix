@@ -41,7 +41,7 @@ jobs:
             
             pip3 install --upgrade pip
             pip3 install docker-compose==1.9.0
-            
+
       - run:
           name: install dependencies - bats
           command: |
@@ -72,7 +72,7 @@ jobs:
             make test
 
       - run:
-          nmae: docker image push
+          name: docker image push
           command: |
 
             TAG_MINOR=${VERSION%.*}-alpine
