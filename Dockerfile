@@ -1,4 +1,4 @@
-FROM smizy/hbase:1.2-alpine
+FROM smizy/hbase:1.3-alpine
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -16,8 +16,8 @@ LABEL \
     org.label-schema.vcs-url="https://github.com/smizy/docker-apache-phoenix"
 
 ENV PHOENIX_VERSION   $VERSION
-ENV PHOENIX_VER       4.12
-ENV HBASE_VER         1.2
+ENV PHOENIX_VER       4.13
+ENV HBASE_VER         1.3
 
 ENV PHOENIX_HOME      /usr/local/phoenix-${PHOENIX_VER}
 
