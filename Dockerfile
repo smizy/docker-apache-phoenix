@@ -42,7 +42,7 @@ RUN set -x \
     && mv /usr/local/${package_name}-bin ${PHOENIX_HOME} \
     && cd ${PHOENIX_HOME} \  
     && mkdir -p server \
-    && mv *server.jar server/ \
+    && mv *-server.jar server/ \
     ## cleanup    
     && rm *-tests.jar *-sources.jar 
 
