@@ -15,7 +15,7 @@ services:
     container_name: namenode-1
     networks: ["vnet"]
     hostname: namenode-1.vnet
-    image: smizy/hadoop-base:2.7.5-alpine 
+    image: smizy/hadoop-base:2.7.6-alpine 
     expose: ["8020"]
     ports:  ["50070"]
     environment:
@@ -30,7 +30,7 @@ services:
     container_name: datanode-1
     networks: ["vnet"]
     hostname: datanode-1.vnet
-    image: smizy/hadoop-base:2.7.5-alpine
+    image: smizy/hadoop-base:2.7.6-alpine
     expose: ["50010", "50020", "50075"]
     environment:
       - HADOOP_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181 
@@ -44,7 +44,7 @@ services:
     container_name: hmaster-1
     networks: ["vnet"]
     hostname: hmaster-1.vnet
-    image: smizy/apache-phoenix:4.13.1-alpine
+    image: smizy/apache-phoenix:4.14.0-alpine
     expose: [16000]
     ports:  [16010]
     depends_on: ["zookeeper-1"]
@@ -59,7 +59,7 @@ services:
     container_name: regionserver-1
     networks: ["vnet"]
     hostname: regionserver-1.vnet
-    image: smizy/apache-phoenix:4.13.1-alpine
+    image: smizy/apache-phoenix:4.14.0-alpine
     expose: [16020, 16030]
     depends_on: ["zookeeper-1"]
     environment:
@@ -71,7 +71,7 @@ services:
     container_name: queryserver-1
     networks: ["vnet"]
     hostname: queryserver-1.vnet
-    image: smizy/apache-phoenix:4.13.1-alpine
+    image: smizy/apache-phoenix:4.14.0-alpine
     expose: [8765]
     depends_on: ["zookeeper-1"]
     environment:

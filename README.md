@@ -1,7 +1,7 @@
 # docker-apache-phoenix
 
-[![](https://images.microbadger.com/badges/image/smizy/apache-phoenix:4.13-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.13-alpine "Get your own image badge on microbadger.com")
-[![](https://images.microbadger.com/badges/version/smizy/apache-phoenix:4.13-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.13-alpine "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/smizy/apache-phoenix:4.14-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.14-alpine "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/version/smizy/apache-phoenix:4.14-alpine.svg)](http://microbadger.com/images/smizy/apache-phoenix:4.14-alpine "Get your own version badge on microbadger.com")
 [![CircleCI](https://circleci.com/gh/smizy/docker-apache-phoenix.svg?style=svg&circle-token=8171bd548172f815e994704c0c7f23ac3447371d)](https://circleci.com/gh/smizy/docker-apache-phoenix)
 
 Apache Phoenix docker image based on alpine
@@ -52,8 +52,8 @@ CSV Upsert complete. 9 rows upserted
 Time: 0.02 sec(s)
 
 > sqlline.py zookeeper-1.vnet
-Connected to: Phoenix (version 4.13)
-Driver: PhoenixEmbeddedDriver (version 4.13)
+Connected to: Phoenix (version 4.14)
+Driver: PhoenixEmbeddedDriver (version 4.14)
 Autocommit status: true
 Transaction isolation: TRANSACTION_READ_COMMITTED
 Building list of tables and columns for tab-completion (set fastconnect to true to skip)...
@@ -83,7 +83,7 @@ sqlline version 1.2.0
 
 ## Use queryserver client 
 ```
-$ docker run -it --rm --net vnet smizy/apache-phoenix:4.13.1-alpine sh
+$ docker run -it --rm --net vnet smizy/apache-phoenix:4.14.0-alpine sh
 > bin/sqlline-thin.py http://queryserver-1.vnet:8765
 Setting property: [incremental, false]
 Setting property: [isolation, TRANSACTION_READ_COMMITTED]
