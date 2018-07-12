@@ -73,6 +73,8 @@ services:
     hostname: queryserver-1.vnet
     image: smizy/apache-phoenix:4.14.0-alpine
     expose: [8765]
+    ports: 
+      - 8765:8765
     depends_on: ["zookeeper-1"]
     environment:
       - HBASE_ZOOKEEPER_QUORUM=zookeeper-1.vnet:2181 
