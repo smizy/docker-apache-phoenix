@@ -7,8 +7,8 @@ jobs:
       - image: docker:17.06.0-ce-git
 
     environment:
-      VERSION: "4.14.0"
-      TAG: "4.14.0-alpine"
+      VERSION: "5.0.0"
+      TAG: "5.0.0-alpine"
       # TAG: ${VERSION}-alpine
       # TAG_MINOR: ${VERSION%.*}-alpine
       # TAG_MAJOR: ${VERSION%%.*}-alpine 
@@ -78,7 +78,7 @@ jobs:
             TAG_MINOR=${VERSION%.*}-alpine
             TAG_MAJOR=${VERSION%%.*}-alpine 
 
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+            if [ "${CIRCLE_BRANCH}" == "5.0" ]; then
               docker login -u $DOCKER_USER -p $DOCKER_PASS
               docker image tag smizy/apache-phoenix:${TAG} smizy/apache-phoenix
               docker image tag smizy/apache-phoenix:${TAG} smizy/apache-phoenix:${TAG_MINOR}
@@ -86,8 +86,8 @@ jobs:
 
               docker image push smizy/apache-phoenix:${TAG}
               docker image push smizy/apache-phoenix:${TAG_MINOR}
-              docker image push smizy/apache-phoenix:${TAG_MAJOR}  
-              docker image push smizy/apache-phoenix:latest
+              # docker image push smizy/apache-phoenix:${TAG_MAJOR}  
+              # docker image push smizy/apache-phoenix:latest
               docker logout
               curl -X POST 'https://hooks.microbadger.com/images/smizy/apache-phoenix/6TMEpbBnLOmyh07_g9d8LIWtl0U='
             fi

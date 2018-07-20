@@ -44,7 +44,7 @@ services:
     container_name: hmaster-1
     networks: ["vnet"]
     hostname: hmaster-1.vnet
-    image: smizy/apache-phoenix:4.14.0-alpine
+    image: smizy/apache-phoenix:5.0.0-alpine
     expose: [16000]
     ports:  [16010]
     depends_on: ["zookeeper-1"]
@@ -59,7 +59,7 @@ services:
     container_name: regionserver-1
     networks: ["vnet"]
     hostname: regionserver-1.vnet
-    image: smizy/apache-phoenix:4.14.0-alpine
+    image: smizy/apache-phoenix:5.0.0-alpine
     expose: [16020, 16030]
     depends_on: ["zookeeper-1"]
     environment:
@@ -71,7 +71,7 @@ services:
     container_name: queryserver-1
     networks: ["vnet"]
     hostname: queryserver-1.vnet
-    image: smizy/apache-phoenix:4.14.0-alpine
+    image: smizy/apache-phoenix:5.0.0-alpine
     expose: [8765]
     depends_on: ["zookeeper-1"]
     environment:
